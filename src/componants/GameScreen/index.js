@@ -41,7 +41,7 @@ const GameScreen = () => {
     borderRadius: bossSize / 2,
   };
 
-  const currentHpPer = `${(bossSize / bossHp) * 100}%`;
+  const currentHpPer = `${((bossSize / bossHp) * 100).toFixed(2)}%`;
 
   return (
     <div className="game-screen">
@@ -51,6 +51,7 @@ const GameScreen = () => {
       <div className="guideLine">
         <div className="hp-bar">
           <div className="current-hp" style={{ width: currentHpPer }}></div>
+          <div className="hp-text">{currentHpPer}</div>
         </div>
       </div>
     </div>
