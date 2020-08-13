@@ -10,13 +10,19 @@ const INIT_HP = 500;
 const GameScreen = () => {
   const [bossSize, setBossSize] = useState(INIT_HP);
   const [bossHp, setBossHp] = useState(INIT_HP);
+  const [hitDamage, setHitDamage] = useState(0);
 
   useEffect(() => {
     const keyupHandler = (e) => {
       switch (e.keyCode) {
         case KEY_SPACE:
         case KEY_ENTER:
-          setBossSize(bossSize - 5);
+          const newHitDamage = Math.floor(Math.random() * 5) + 1;
+          if (Math.random() < 0.5) {
+            setHitDamage(newHitDamage * 5);
+          } else {
+            setHitDamage(newHitDamage);
+          }
       }
     };
 
@@ -26,6 +32,10 @@ const GameScreen = () => {
       window.removeEventListener("keyup", keyupHandler);
     };
   }, [bossSize]);
+
+  useEffect(() => {
+    setBossSize(bossSize - hitDamage);
+  }, [hitDamage]);
 
   useEffect(() => {
     if (bossSize < 0) {
@@ -46,12 +56,16 @@ const GameScreen = () => {
   return (
     <div className="game-screen">
       <div className="game-monitor">
-        <div className="boss" style={bossStyle}></div>
+        <div className="boss" style={bossStyle}>
+          {hitDamage > 0 && hitDamage}
+        </div>
       </div>
       <div className="guideLine">
         <div className="hp-bar">
           <div className="current-hp" style={{ width: currentHpPer }}></div>
-          <div className="hp-text">{currentHpPer}</div>
+          <div className="hp-text">
+            {bossSize} / {bossHp}
+          </div>
         </div>
       </div>
     </div>
