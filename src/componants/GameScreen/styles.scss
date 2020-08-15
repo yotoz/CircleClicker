@@ -20,6 +20,8 @@ body,
     align-items: center;
     justify-content: center;
 
+    position: relative;
+
     .boss {
       background-color: darkred;
     }
@@ -29,35 +31,5 @@ body,
     flex: 1;
     display: flex;
     justify-content: center;
-
-    .hp-bar {
-      position: relative;
-
-      background-color: grey;
-      height: 25px;
-      width: 300px;
-
-      .current-hp {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-
-        background-color: red;
-
-        height: 100%;
-      }
-
-      .hp-text {
-        color: white;
-        font-size: 12px;
-        font-weight: bold;
-
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
   }
 }
