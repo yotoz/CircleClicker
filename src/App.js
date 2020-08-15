@@ -1,5 +1,5 @@
-import React from 'react';
-import GameScreen from './componants/GameScreen';
+import React from "react";
+import GameScreen from "./components/GameScreen";
 
 function App() {
   return <GameScreen />;
